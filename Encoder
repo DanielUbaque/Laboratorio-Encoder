@@ -2,36 +2,22 @@
 #define FALSE 0
 #define K 5.99;  
 #define PERIOD_OMEGA 1000
-
+ 
 
 #include "mcc_generated_files/mcc.h"
+
 int ENCODER_V , ENCODER_OLD; 
+int COUNT_OMEGA; 
 bool flag_encoder, FLAG_RISE ; 
 double COUNT_RISE; 
-int COUNT_OMEGA; 
-/*
-                         Main application
- */
+
+
 void main(void)
 { 
     double w_rad_s=0; 
-    // initialize the device
     SYSTEM_Initialize();
     
-    // When using interrupts, you need to set the Global and Peripheral Interrupt Enable bits
-    // Use the following macros to:
 
-    //Enable the Global Interrupts
-    INTERRUPT_GlobalInterruptEnable();
-
-    // Enable the Peripheral Interrupts
-    INTERRUPT_PeripheralInterruptEnable();
-
-    // Disable the Global Interrupts
-   // INTERRUPT_GlobalInterruptDisable();
-
-    // Disable the Peripheral Interrupts
-    //INTERRUPT_PeripheralInterruptDisable();
     ENCODER_OLD = FALSE; 
     ENCODER_V   = FALSE; 
     COUNT_RISE = 0;
@@ -41,7 +27,7 @@ void main(void)
     
     while (1)
     {
-        // Add your application code
+
         if (flag_encoder == TRUE ){
             flag_encoder = FALSE; 
             
@@ -65,5 +51,3 @@ void main(void)
     } 
   }
 }
-/**
- End of File
